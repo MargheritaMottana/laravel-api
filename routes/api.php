@@ -25,7 +25,14 @@ Route::name('api.')->group(function(){
         return $request->user();
     });
     
-    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-    Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+    // Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    // Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+
+    //oppure
+
+    Route::resource('projects', ProjectController::class)->only([
+        'index',
+        'show',
+    ]);
 
 });
